@@ -3,279 +3,359 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alwaysbooked — AI Voice Receptionist for Local Service Businesses</title>
+  <title>Alwaysbooked — AI Receptionist & Lead System for Local Service Businesses</title>
   <meta name="description" content="We install the AI system that answers every call, follows up on every lead, and books appointments automatically. Done for you." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Alwaysbooked — AI Voice Receptionist for Local Service Businesses" />
+  <meta property="og:title" content="Alwaysbooked — AI Receptionist & Lead System for Local Service Businesses" />
   <meta property="og:description" content="We install the AI system that answers every call, follows up on every lead, and books appointments automatically. Done for you." />
   <meta property="og:url" content="https://www.alwaysbooked.us" />
   <meta property="og:type" content="website" />
+  <!-- TODO: add an OG share image -> <meta property="og:image" content="https://www.alwaysbooked.us/assets/og-image.jpg" /> -->
 
-  <!-- Google Fonts -->
+  <!-- Fonts: Space Grotesk (display) + Inter (body) + Caveat (handwritten accent) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Nav-specific styles -->
-  <style>
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all 0.2s;
-    }
-    .hamburger.is-active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .hamburger.is-active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.is-active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      gap: 24px;
-      padding: 24px;
-      border-top: 1px solid var(--border-soft);
-      background: rgba(0, 0, 0, 0.95);
-    }
-    .mobile-menu.is-open {
-      display: flex;
-    }
-    .mobile-menu ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .mobile-menu ul a {
-      color: var(--text-dim);
-      font-size: 16px;
-    }
-    @media (max-width: 768px) {
-      .hamburger { display: flex; }
-      .nav-links, .nav-cta { display: none; }
-      body { padding-top: 64px; }
-    }
-  </style>
 </head>
-<body style="padding-top: 64px;">
+<body>
 
   <!-- ===================== NAV ===================== -->
   <nav>
-    <div class="nav-inner container">
-      <a href="/" class="nav-logo">[ab]</a>
-      <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">Yes, show me!</a>
-      <button class="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Alwaysbooked</a>
+      <ul class="nav-links">
+        <li><a href="#system">How It Works</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">Apply Now <span class="arrow">→</span></a>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
     <div class="mobile-menu">
       <ul>
-        <li><a href="#problem">The Problem</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#system">How It Works</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#results">Results</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
-      <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener">Show Me My Gaps</a>
+      <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener">Apply Now</a>
     </div>
   </nav>
 
   <!-- ===================== HERO ===================== -->
   <section class="hero">
-    <div class="hero-grid">
-      <!-- Left: headline + CTA -->
-      <div class="hero-left">
-        <div class="hero-bracket">[ab]</div>
-        <h1>Stop letting<br>bookings slip away</h1>
-        <p class="subhead">We install the AI system that answers every call, follows up on every lead, and books appointments automatically — done for you.</p>
-        <div class="hero-ctas">
-          <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener">Show Me My Gaps</a>
+    <div class="hero-inner">
+      <span class="accent-label reveal">done-for-you</span>
+      <h1 class="reveal" data-delay="1">Every missed call is a booked competitor.</h1>
+      <p class="subhead reveal" data-delay="2">We install the AI system that answers every call, follows up on every lead, and books appointments automatically — so the revenue you're already earning stops slipping away.</p>
+      <div class="hero-ctas reveal" data-delay="3">
+        <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener">Apply Now <span class="arrow">→</span></a>
+        <span class="hero-note">30-min call · no pitch · we're selective about who we take on</span>
+      </div>
+
+      <!-- Metrics ARE the visual -->
+      <div class="hero-metrics reveal">
+        <div class="hero-metric">
+          <span class="num">172</span>
+          <span class="lbl">Calls handled by AI in one month</span>
+        </div>
+        <div class="hero-metric">
+          <span class="num">63%</span>
+          <span class="lbl">Resolved with zero human handoff</span>
+        </div>
+        <div class="hero-metric">
+          <span class="num">$11,680</span>
+          <span class="lbl">Labor saved in 30 days</span>
         </div>
       </div>
-      <!-- Right: call log proof visual -->
-      <div class="hero-right">
-        <div class="proof-table">
-          <div class="proof-table-header">
-            <span>Time</span>
-            <span>Caller</span>
-            <span>Outcome</span>
-            <span>Resolved</span>
-          </div>
-          <div class="proof-table-row">
-            <span>7:09 AM</span>
-            <span>Yin Heng Wong</span>
-            <span><span class="badge badge-booked">Booked</span></span>
-            <span style="color:#34d399;">✓</span>
-          </div>
-          <div class="proof-table-row">
-            <span>9:23 AM</span>
-            <span>New Patient</span>
-            <span><span class="badge badge-resolved">Resolved</span></span>
-            <span style="color:#34d399;">✓</span>
-          </div>
-          <div class="proof-table-row">
-            <span>11:45 AM</span>
-            <span>Pauline</span>
-            <span><span class="badge badge-transfer">Transferred</span></span>
-            <span style="color:#fbbf24;">→</span>
-          </div>
-          <div class="proof-table-row">
-            <span>2:14 PM</span>
-            <span>Callback Request</span>
-            <span><span class="badge badge-booked">Booked</span></span>
-            <span style="color:#34d399;">✓</span>
-          </div>
-          <div class="proof-table-row">
-            <span>4:37 PM</span>
-            <span>Info Request</span>
-            <span><span class="badge badge-resolved">Resolved</span></span>
-            <span style="color:#34d399;">✓</span>
-          </div>
-          <div class="proof-table-row">
-            <span>6:52 PM</span>
-            <span>Urgent Follow-up</span>
-            <span><span class="badge badge-booked">Booked</span></span>
-            <span style="color:#34d399;">✓</span>
-          </div>
-          <div class="proof-table-row">
-            <span>8:11 PM</span>
-            <span>After-hours Intake</span>
-            <span><span class="badge badge-resolved">Resolved</span></span>
-            <span style="color:#34d399;">✓</span>
-          </div>
-          <div class="proof-table-footer">
-            <span><strong>172</strong> calls this month</span>
-            <span><strong>63%</strong> resolved without handoff</span>
-            <span><strong>$11,680</strong> labor saved</span>
-          </div>
-        </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST STRIP ===================== -->
+  <section class="trust">
+    <div class="container">
+      <p class="trust-label">Built on the tools you already trust</p>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <span class="marquee-item">Retell AI</span>
+        <span class="marquee-item">Twilio</span>
+        <span class="marquee-item">Google Calendar</span>
+        <span class="marquee-item">Cal.com</span>
+        <span class="marquee-item">OpenAI</span>
+        <span class="marquee-item">Make</span>
+        <span class="marquee-item">n8n</span>
+        <!-- duplicate set for seamless loop -->
+        <span class="marquee-item">Retell AI</span>
+        <span class="marquee-item">Twilio</span>
+        <span class="marquee-item">Google Calendar</span>
+        <span class="marquee-item">Cal.com</span>
+        <span class="marquee-item">OpenAI</span>
+        <span class="marquee-item">Make</span>
+        <span class="marquee-item">n8n</span>
       </div>
+    </div>
+    <div class="container">
+      <p class="industries"><strong>Built for:</strong> dental · med spas · HVAC &amp; home services · chiropractic · law firms</p>
     </div>
   </section>
 
   <!-- ===================== PROBLEM ===================== -->
   <section class="section" id="problem">
-    <div class="container text-center">
-      <span class="eyebrow">The Problem</span>
-      <h2>Two Problems.<br>One System.</h2>
-      <p class="subhead" style="margin: 16px auto 56px;">Most businesses don't need more leads — they need better follow-up. Most need both.</p>
-      <div class="grid-2">
-        <div class="card">
-          <span style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.1em;display:block;margin-bottom:16px;">01</span>
-          <h3>You get leads. You lose them.</h3>
-          <ul style="margin-top:16px;padding-left:20px;color:var(--text-dim);font-size:15px;line-height:1.8;">
-            <li>Calls go to voicemail while you're on a job</li>
-            <li>Texts sit unread for hours</li>
-            <li>Leads choose your competitor in under 5 minutes</li>
-            <li>No one answering after hours or on weekends</li>
-          </ul>
-        </div>
-        <div class="card">
-          <span style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.1em;display:block;margin-bottom:16px;">02</span>
-          <h3>You don't get enough leads.</h3>
-          <ul style="margin-top:16px;padding-left:20px;color:var(--text-dim);font-size:15px;line-height:1.8;">
-            <li>Referrals are inconsistent</li>
-            <li>Ad spend with no follow-up system = wasted money</li>
-            <li>No automated nurture sequence for cold leads</li>
-            <li>Calendar half-empty when it shouldn't be</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== HOW IT WORKS ===================== -->
-  <section class="section" id="how-it-works" style="background:var(--bg-elevated);">
-    <div class="container text-center">
-      <span class="eyebrow">The System</span>
-      <h2>Six pieces.<br>One done-for-you install.</h2>
-      <p class="subhead" style="margin:16px auto 56px;">We build it, train it, deploy it. You go live in days — not months.</p>
-      <div class="grid-3">
-        <div class="card" style="text-align:left;">
-          <div class="icon-block">📣</div>
-          <h3>Lead Generation</h3>
-          <p style="margin-top:10px;color:var(--text-dim);font-size:15px;line-height:1.7;">Targeted paid campaigns and organic funnels drive qualified calls and texts into your system.</p>
-        </div>
-        <div class="card" style="text-align:left;">
-          <div class="icon-block">⚡</div>
-          <h3>Instant Response</h3>
-          <p style="margin-top:10px;color:var(--text-dim);font-size:15px;line-height:1.7;">Every lead gets a reply in under 60 seconds — across phone, SMS, and web. No more 5-minute windows missed.</p>
-        </div>
-        <div class="card" style="text-align:left;">
-          <div class="icon-block">🤖</div>
-          <h3>24/7 AI Receptionist</h3>
-          <p style="margin-top:10px;color:var(--text-dim);font-size:15px;line-height:1.7;">Answers calls, qualifies leads, and books appointments — at 3am on a Sunday if needed.</p>
-        </div>
-        <div class="card" style="text-align:left;">
-          <div class="icon-block">🔁</div>
-          <h3>Auto Follow-Up</h3>
-          <p style="margin-top:10px;color:var(--text-dim);font-size:15px;line-height:1.7;">Multi-touch SMS sequences re-engage no-shows and unbooked leads automatically.</p>
-        </div>
-        <div class="card" style="text-align:left;">
-          <div class="icon-block">📅</div>
-          <h3>Calendar Booking</h3>
-          <p style="margin-top:10px;color:var(--text-dim);font-size:15px;line-height:1.7;">Appointments write directly to your Google Calendar, iCal, or booking system. No double-entry.</p>
-        </div>
-        <div class="card" style="text-align:left;">
-          <div class="icon-block">🛠️</div>
-          <h3>Done-For-You Setup</h3>
-          <p style="margin-top:10px;color:var(--text-dim);font-size:15px;line-height:1.7;">We build, train, and deploy everything. You show up to a 30-minute kickoff and we handle the rest.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== STATS ===================== -->
-  <section class="section">
     <div class="container">
-      <div class="card" style="text-align:center;padding:64px 48px;">
-        <span class="eyebrow">Proof</span>
-        <h2>Real numbers from one client.<br>One month.</h2>
-        <div class="stats-grid" style="margin-top:56px;">
-          <div class="stat-item">
-            <span class="stat-number">172</span>
-            <span class="stat-label">Calls handled by AI</span>
+      <div class="section-head reveal">
+        <span class="accent-label">the problem</span>
+        <h2>Two problems. One system.</h2>
+        <p class="subhead">Most businesses don't need more leads — they need better follow-up. Most need both.</p>
+      </div>
+      <div class="system">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>You get leads. You lose them.</h3>
+          <p>Calls go to voicemail while you're on a job. Texts sit unread for hours. Leads pick your competitor in under five minutes — and no one's answering after hours or on weekends.</p>
+        </div>
+        <div class="step reveal" data-delay="1">
+          <div class="step-num">02</div>
+          <h3>You don't get enough leads.</h3>
+          <p>Referrals are inconsistent. Ad spend with no follow-up system is wasted money. There's no nurture sequence working cold leads, so your calendar sits half-empty when it shouldn't.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AI AD CLIPS CAROUSEL ===================== -->
+  <section class="section" id="work" style="background:var(--bg-elevated);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="accent-label">the creative</span>
+        <h2>Ads that fill the pipeline.</h2>
+        <p class="subhead">AI-built ad creative engineered to drive qualified calls and texts straight into your booking system.</p>
+      </div>
+
+      <div class="carousel reveal" data-carousel>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <!--
+              To add your real clips, replace each .media-placeholder with:
+              <video src="assets/ads/ad1.mp4" poster="assets/ads/ad1.jpg" muted loop playsinline preload="metadata"></video>
+              Keep one .carousel-slide per clip.
+            -->
+            <div class="carousel-slide">
+              <div class="media-placeholder">
+                <span class="ph-icon">▶</span>
+                Ad clip 1 — drop <code>assets/ads/ad1.mp4</code>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="media-placeholder">
+                <span class="ph-icon">▶</span>
+                Ad clip 2 — drop <code>assets/ads/ad2.mp4</code>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="media-placeholder">
+                <span class="ph-icon">▶</span>
+                Ad clip 3 — drop <code>assets/ads/ad3.mp4</code>
+              </div>
+            </div>
           </div>
-          <div class="stat-item">
-            <span class="stat-number">63%</span>
-            <span class="stat-label">Fully resolved without human handoff</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">$11,680</span>
-            <span class="stat-label">Labor saved in one month</span>
+          <div class="carousel-caption">
+            <div>
+              <h3>AI ad creative</h3>
+              <p>Scroll-stopping hooks, built and tested for local service offers.</p>
+            </div>
+            <div class="carousel-controls">
+              <button class="carousel-btn" data-carousel-prev aria-label="Previous clip">‹</button>
+              <button class="carousel-btn" data-carousel-next aria-label="Next clip">›</button>
+            </div>
           </div>
         </div>
-        <p style="margin-top:32px;font-size:13px;color:var(--text-mute);">Source: 30-day deployment, dental practice client.</p>
+        <div class="carousel-dots" data-carousel-dots></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE SYSTEM (01–04) ===================== -->
+  <section class="section" id="system">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="accent-label">the system</span>
+        <h2>One install. Four moving parts.</h2>
+        <p class="subhead">We build it, train it, deploy it. You go live in days — not months.</p>
+      </div>
+      <div class="system">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>We drive the leads</h3>
+          <p>Targeted paid campaigns and organic funnels push qualified calls and texts into your system — so there's a steady pipeline to convert.</p>
+        </div>
+        <div class="step reveal" data-delay="1">
+          <div class="step-num">02</div>
+          <h3>AI answers &amp; books instantly</h3>
+          <p>A 24/7 AI receptionist picks up every call, qualifies the lead, and books the appointment — in under 60 seconds, at 3am on a Sunday if needed.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h3>Auto follow-up recovers the rest</h3>
+          <p>Multi-touch SMS sequences re-engage no-shows and unbooked leads automatically, and write every appointment straight to your calendar.</p>
+        </div>
+        <div class="step reveal" data-delay="1">
+          <div class="step-num">04</div>
+          <h3>Done-for-you, live in days</h3>
+          <p>We build, train, and deploy everything. You show up to a 30-minute kickoff — we handle the rest and have you live in 5–10 business days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AUTOMATIONS SHOWCASE ===================== -->
+  <section class="section" style="background:var(--bg-elevated);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="accent-label">under the hood</span>
+        <h2>The automations we build.</h2>
+        <p class="subhead">Real workflows running behind the scenes — answering, qualifying, following up, and booking on autopilot.</p>
+      </div>
+
+      <div class="showcase">
+        <!-- Showcase 1 -->
+        <div class="showcase-row reveal">
+          <div class="showcase-media">
+            <!-- Replace with: <img src="assets/automations/receptionist.png" alt="AI receptionist call flow" /> -->
+            <div class="media-placeholder">
+              <span class="ph-icon">▦</span>
+              Screenshot — <code>assets/automations/receptionist.png</code>
+            </div>
+          </div>
+          <div class="showcase-text">
+            <span class="accent-label">live call handling</span>
+            <h3>The 24/7 AI receptionist</h3>
+            <p>Every inbound call answered, qualified, and routed — with the appointment written to your calendar before the caller hangs up.</p>
+            <ul>
+              <li>Natural voice that passes the "is this a real person?" test</li>
+              <li>Qualifies and books without a human in the loop</li>
+              <li>Transfers to you only when it actually matters</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Showcase 2 -->
+        <div class="showcase-row reverse reveal">
+          <div class="showcase-media">
+            <!-- Replace with: <video src="assets/automations/followup.mp4" muted loop playsinline></video> -->
+            <div class="media-placeholder">
+              <span class="ph-icon">▦</span>
+              Screen recording — <code>assets/automations/followup.mp4</code>
+            </div>
+          </div>
+          <div class="showcase-text">
+            <span class="accent-label">never drop a lead</span>
+            <h3>Automated follow-up sequences</h3>
+            <p>Multi-touch SMS that re-engages every no-show and unbooked lead until they book or opt out — no manual chasing required.</p>
+            <ul>
+              <li>Triggers the instant a lead goes cold</li>
+              <li>Personalized to your business and offer</li>
+              <li>Hands warm replies back to booking automatically</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Deferred slot: lead-flow flowchart goes here later.
+        <div class="showcase-row reveal">
+          <div class="showcase-media"><img src="assets/automations/lead-flowchart.png" alt="Lead flow diagram" /></div>
+          <div class="showcase-text">...</div>
+        </div>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RESULTS / CASE STUDY ===================== -->
+  <section class="section" id="results">
+    <div class="container">
+      <div class="results reveal">
+        <div class="section-head" style="margin-bottom:0;">
+          <span class="accent-label">the proof</span>
+          <h2>Real numbers. One client. One month.</h2>
+          <p class="subhead">A dental practice drowning in missed calls — here's what the system did in its first 30 days.</p>
+        </div>
+
+        <div class="results-grid">
+          <div class="result-stat">
+            <span class="num">172</span>
+            <span class="lbl">Calls handled by AI</span>
+          </div>
+          <div class="result-stat">
+            <span class="num">63%</span>
+            <span class="lbl">Resolved without handoff</span>
+          </div>
+          <div class="result-stat">
+            <span class="num">$11,680</span>
+            <span class="lbl">Labor saved in one month</span>
+          </div>
+        </div>
+        <p class="results-source">Source: 30-day deployment, dental practice client.</p>
+
+        <!-- Supporting visual: sample call log -->
+        <div style="margin-top:48px;">
+          <div class="proof-table">
+            <div class="proof-table-header">
+              <span>Time</span><span>Caller</span><span>Outcome</span><span>Done</span>
+            </div>
+            <div class="proof-table-row">
+              <span>7:09 AM</span><span>Yin Heng Wong</span><span><span class="badge badge-booked">Booked</span></span><span style="color:var(--success);">✓</span>
+            </div>
+            <div class="proof-table-row">
+              <span>9:23 AM</span><span>New Patient</span><span><span class="badge badge-resolved">Resolved</span></span><span style="color:var(--success);">✓</span>
+            </div>
+            <div class="proof-table-row">
+              <span>11:45 AM</span><span>Pauline</span><span><span class="badge badge-transfer">Transferred</span></span><span style="color:var(--warn);">→</span>
+            </div>
+            <div class="proof-table-row">
+              <span>2:14 PM</span><span>Callback Request</span><span><span class="badge badge-booked">Booked</span></span><span style="color:var(--success);">✓</span>
+            </div>
+            <div class="proof-table-row">
+              <span>6:52 PM</span><span>Urgent Follow-up</span><span><span class="badge badge-booked">Booked</span></span><span style="color:var(--success);">✓</span>
+            </div>
+            <div class="proof-table-row">
+              <span>8:11 PM</span><span>After-hours Intake</span><span><span class="badge badge-resolved">Resolved</span></span><span style="color:var(--success);">✓</span>
+            </div>
+            <div class="proof-table-footer">
+              <span><strong>172</strong> calls this month</span>
+              <span><strong>63%</strong> resolved without handoff</span>
+              <span><strong>$11,680</strong> labor saved</span>
+            </div>
+          </div>
+          <span class="proof-caption">Sample: how your calls get handled.</span>
+        </div>
+
+        <!-- Testimonial — TODO: replace with the real quote + name + business -->
+        <div class="testimonial">
+          <blockquote>Add the dental client's real quote here once you collect it.</blockquote>
+          <p class="attribution"><strong>Client name</strong>, Practice / Business name</p>
+          <p class="testimonial-todo">TODO: real quote — do not ship placeholder. Ask the dental client for one line + permission to use their name/logo.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===================== FAQ ===================== -->
-  <section class="section" id="faq">
+  <section class="section" id="faq" style="background:var(--bg-elevated);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);">
     <div class="container">
-      <div style="max-width:760px;margin:0 auto;text-align:center;">
-        <span class="eyebrow">Questions</span>
-        <h2>Things people ask<br>before signing.</h2>
+      <div class="section-head reveal">
+        <span class="accent-label">questions</span>
+        <h2>Things people ask before signing.</h2>
       </div>
-      <div style="max-width:760px;margin:56px auto 0;">
+      <div class="faq-wrap reveal">
         <details class="faq-item">
           <summary>How fast can you launch?</summary>
           <p>Most installs go live in 5–10 business days. We handle the build, training, and deployment. You provide a phone number to forward, your booking calendar, and 30 minutes for a kickoff call.</p>
@@ -305,13 +385,14 @@
   </section>
 
   <!-- ===================== FINAL CTA ===================== -->
-  <section class="section" style="padding-top:60px;padding-bottom:60px;">
+  <section class="section">
     <div class="container">
-      <div class="cta-section">
+      <div class="cta-section reveal">
         <div class="cta-glow"></div>
-        <h2>Ready to stop<br>losing leads?</h2>
-        <p class="subhead" style="margin:20px auto 40px;">30-minute call. No pitch. We'll show you exactly what we'd build for your business.</p>
-        <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener">Show Me My Gaps</a>
+        <span class="accent-label">your move</span>
+        <h2>Be our next case study.</h2>
+        <p class="subhead">30-minute call. No pitch. We'll show you exactly what we'd build for your business — and whether you're a fit.</p>
+        <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener">Apply Now <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -322,6 +403,8 @@
       <div class="footer-inner">
         <a href="/" class="nav-logo">Alwaysbooked</a>
         <ul class="footer-links">
+          <li><a href="#system">How It Works</a></li>
+          <li><a href="#results">Results</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/contact">Contact</a></li>
           <li><a href="mailto:alwaysbook3d@gmail.com">alwaysbook3d@gmail.com</a></li>
@@ -331,19 +414,94 @@
     </div>
   </footer>
 
-  <!-- Mobile nav script -->
+  <!-- ===================== SCRIPTS ===================== -->
   <script>
-    document.querySelector('.hamburger').addEventListener('click', function() {
-      document.querySelector('.mobile-menu').classList.toggle('is-open');
-      this.classList.toggle('is-active');
-    });
-    // Close mobile menu on link click
-    document.querySelectorAll('.mobile-menu a').forEach(function(a) {
-      a.addEventListener('click', function() {
-        document.querySelector('.mobile-menu').classList.remove('is-open');
-        document.querySelector('.hamburger').classList.remove('is-active');
+    // --- Mobile nav ---
+    (function () {
+      var hamburger = document.querySelector('.hamburger');
+      var menu = document.querySelector('.mobile-menu');
+      if (hamburger && menu) {
+        hamburger.addEventListener('click', function () {
+          menu.classList.toggle('is-open');
+          hamburger.classList.toggle('is-active');
+        });
+        menu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            menu.classList.remove('is-open');
+            hamburger.classList.remove('is-active');
+          });
+        });
+      }
+    })();
+
+    // --- Scroll reveal ---
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || !els.length) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+
+    // --- Carousel ---
+    (function () {
+      document.querySelectorAll('[data-carousel]').forEach(function (root) {
+        var track = root.querySelector('.carousel-track');
+        var slides = Array.prototype.slice.call(root.querySelectorAll('.carousel-slide'));
+        var dotsWrap = root.querySelector('[data-carousel-dots]');
+        var prev = root.querySelector('[data-carousel-prev]');
+        var next = root.querySelector('[data-carousel-next]');
+        if (!track || slides.length === 0) return;
+
+        var index = 0;
+
+        // Build dots
+        var dots = slides.map(function (_, i) {
+          var b = document.createElement('button');
+          b.className = 'carousel-dot' + (i === 0 ? ' is-active' : '');
+          b.setAttribute('aria-label', 'Go to clip ' + (i + 1));
+          b.addEventListener('click', function () { go(i); });
+          if (dotsWrap) dotsWrap.appendChild(b);
+          return b;
+        });
+
+        function go(i) {
+          index = (i + slides.length) % slides.length;
+          track.style.transform = 'translateX(' + (-index * 100) + '%)';
+          dots.forEach(function (d, di) { d.classList.toggle('is-active', di === index); });
+          // play the visible video, pause the rest
+          slides.forEach(function (s, si) {
+            var v = s.querySelector('video');
+            if (!v) return;
+            if (si === index) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+            else { v.pause(); }
+          });
+        }
+
+        if (prev) prev.addEventListener('click', function () { go(index - 1); });
+        if (next) next.addEventListener('click', function () { go(index + 1); });
+
+        // Touch swipe
+        var startX = 0, dx = 0, dragging = false;
+        track.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
+        track.addEventListener('touchmove', function (e) { if (dragging) dx = e.touches[0].clientX - startX; }, { passive: true });
+        track.addEventListener('touchend', function () {
+          if (dragging && Math.abs(dx) > 50) { go(index + (dx < 0 ? 1 : -1)); }
+          dragging = false; dx = 0;
+        });
+
+        go(0);
       });
-    });
+    })();
   </script>
 
 </body>

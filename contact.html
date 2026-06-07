@@ -4,81 +4,104 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Alwaysbooked</title>
+  <meta name="description" content="Get in touch with Alwaysbooked. Book a 30-minute discovery call or email us — we reply within one business day." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; }
-    .hamburger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; transition:all 0.2s; }
-    .hamburger.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-    .hamburger.is-active span:nth-child(2) { opacity:0; }
-    .hamburger.is-active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
-    .mobile-menu { display:none; flex-direction:column; gap:24px; padding:24px; border-top:1px solid var(--border-soft); background:rgba(0,0,0,0.95); }
-    .mobile-menu.is-open { display:flex; }
-    .mobile-menu ul { list-style:none; display:flex; flex-direction:column; gap:16px; }
-    .mobile-menu ul a { color:var(--text-dim); font-size:16px; }
-    @media(max-width:768px) { .hamburger { display:flex; } .nav-links,.nav-cta { display:none; } }
 
-    @media(max-width:900px) {
-      .contact-grid { grid-template-columns: 1fr !important; }
+  <style>
+    body { padding-top: 68px; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body style="padding-top:64px;">
+<body>
 
+  <!-- ===================== NAV ===================== -->
   <nav>
-    <div class="nav-inner container">
-      <a href="/" class="nav-logo">[ab]</a>
-      <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">Book a Call</a>
-      <button class="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Alwaysbooked</a>
+      <ul class="nav-links">
+        <li><a href="/#system">How It Works</a></li>
+        <li><a href="/#work">Our Work</a></li>
+        <li><a href="/#results">Results</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">Apply Now <span class="arrow">→</span></a>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
     <div class="mobile-menu">
       <ul>
-        <li><a href="/#how-it-works">Services</a></li>
+        <li><a href="/#system">How It Works</a></li>
+        <li><a href="/#work">Our Work</a></li>
+        <li><a href="/#results">Results</a></li>
         <li><a href="/#faq">FAQ</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
-      <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener">Book a Call</a>
+      <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener">Apply Now</a>
     </div>
   </nav>
 
   <main>
-    <section style="padding: 100px 24px 64px; text-align:center;">
-      <div class="container" style="max-width:640px;">
-        <span class="eyebrow">Get In Touch</span>
-        <h1 style="font-size: clamp(36px, 5vw, 64px);">Let's talk.</h1>
-        <p class="subhead" style="margin: 20px auto 0;">Tell us about your business — we'll get back to you within one business day. Or skip the form and book a call directly.</p>
+    <section style="padding: 130px 24px 56px; text-align:center;">
+      <div class="container" style="max-width:680px;">
+        <span class="accent-label">get in touch</span>
+        <h1 style="font-size: clamp(40px, 6vw, 76px);">Let's talk.</h1>
+        <p class="subhead" style="margin: 24px auto 0;">Book a 30-minute discovery call and we'll show you exactly what we'd build for your business — no pitch. Prefer email? We reply within one business day.</p>
       </div>
     </section>
 
-    <section style="padding: 0 24px 120px;">
-      <div class="container">
-        <div class="contact-grid" style="display:grid; grid-template-columns:1.4fr 1fr; gap:32px; align-items:start;">
-          <!-- Left: Typeform embed -->
-          <div class="card" style="padding:8px;">
-            <!-- TYPEFORM EMBED: Replace TYPEFORM_ID with your actual Typeform form ID from the Typeform dashboard -->
-            <!-- To get your embed code: Typeform dashboard → your form → Share → Embed → Standard (iframe) -->
-            <iframe
-              src="https://form.typeform.com/to/TYPEFORM_ID"
-              title="Alwaysbooked Contact Form"
-              loading="lazy"
-              allow="camera; microphone; autoplay; encrypted-media;"
-              style="width:100%; height:560px; border:0; border-radius:12px; display:block;">
-            </iframe>
-            <!-- TYPEFORM EMBED END -->
+    <section style="padding: 0 24px 130px;">
+      <div class="container" style="max-width:920px;">
+        <div class="contact-grid">
+          <!-- Primary: booking -->
+          <div class="card">
+            <span class="accent-label" style="margin-bottom:0;">recommended</span>
+            <h3 style="margin-top:8px;">Book a discovery call</h3>
+            <p style="margin-top:12px; color:var(--text-dim); font-size:15px; line-height:1.7;">Pick a 30-minute slot and we'll walk through your current setup, where leads are slipping, and what we'd install to fix it.</p>
+            <ul style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
+              <li style="color:var(--text-dim); font-size:14px;">✓ No pitch — a working session</li>
+              <li style="color:var(--text-dim); font-size:14px;">✓ We're selective about who we take on</li>
+              <li style="color:var(--text-dim); font-size:14px;">✓ Leave with a clear plan either way</li>
+            </ul>
+            <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:28px; width:100%; justify-content:center;">Book Your Call <span class="arrow">→</span></a>
           </div>
-          <!-- Right: booking card -->
-          <div style="position:sticky; top:88px; display:flex; flex-direction:column; gap:20px;">
+
+          <!-- Secondary: email + quick note form (mailto, always works) -->
+          <div style="display:flex; flex-direction:column; gap:24px;">
             <div class="card">
-              <h3>Prefer to book directly?</h3>
-              <p style="margin-top:12px; color:var(--text-dim); font-size:15px; line-height:1.7;">Skip the form. Pick a 30-minute slot and we'll talk through your setup on the call.</p>
-              <a href="https://cal.com/alwaysbooked/discoverycall?overlayCalendar=true" class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:24px; width:100%; justify-content:center;">Book a Discovery Call</a>
+              <h3 style="font-size:18px;">Send a quick note</h3>
+              <p style="margin-top:10px; color:var(--text-dim); font-size:14px; line-height:1.6;">Tell us about your business and we'll get back to you.</p>
+              <!--
+                This form opens the visitor's email client pre-filled (no backend needed).
+                To capture submissions automatically later, swap the action for a
+                Formspree/Tally endpoint: <form action="https://formspree.io/f/XXXX" method="POST">
+              -->
+              <form action="mailto:alwaysbook3d@gmail.com" method="post" enctype="text/plain" style="margin-top:18px; display:flex; flex-direction:column; gap:12px;">
+                <input type="text" name="name" placeholder="Your name" required
+                  style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:12px 14px; color:var(--text); font-family:inherit; font-size:15px;" />
+                <input type="text" name="business" placeholder="Business name & industry"
+                  style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:12px 14px; color:var(--text); font-family:inherit; font-size:15px;" />
+                <textarea name="message" rows="3" placeholder="What's your biggest lead/booking headache?"
+                  style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:12px 14px; color:var(--text); font-family:inherit; font-size:15px; resize:vertical;"></textarea>
+                <button type="submit" class="btn btn-ghost" style="width:100%; justify-content:center;">Send Email</button>
+              </form>
             </div>
             <div class="card">
-              <h3 style="font-size:16px;">Email us</h3>
+              <h3 style="font-size:16px;">Email us directly</h3>
               <a href="mailto:alwaysbook3d@gmail.com" style="color:var(--accent); font-size:15px; display:block; margin-top:8px;">alwaysbook3d@gmail.com</a>
             </div>
           </div>
@@ -92,8 +115,9 @@
       <div class="footer-inner">
         <a href="/" class="nav-logo">Alwaysbooked</a>
         <ul class="footer-links">
+          <li><a href="/#system">How It Works</a></li>
+          <li><a href="/#results">Results</a></li>
           <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/contact">Contact</a></li>
           <li><a href="mailto:alwaysbook3d@gmail.com">alwaysbook3d@gmail.com</a></li>
         </ul>
       </div>
@@ -102,12 +126,22 @@
   </footer>
 
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('is-active');
-      mobileMenu.classList.toggle('is-open');
-    });
+    (function () {
+      var hamburger = document.querySelector('.hamburger');
+      var menu = document.querySelector('.mobile-menu');
+      if (hamburger && menu) {
+        hamburger.addEventListener('click', function () {
+          menu.classList.toggle('is-open');
+          hamburger.classList.toggle('is-active');
+        });
+        menu.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            menu.classList.remove('is-open');
+            hamburger.classList.remove('is-active');
+          });
+        });
+      }
+    })();
   </script>
 
 </body>
