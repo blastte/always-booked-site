@@ -6,6 +6,25 @@
   <title>Contact — Alwaysbooked</title>
   <meta name="description" content="Book a 30-minute discovery call or email us. We reply within one business day." />
 
+  <link rel="canonical" href="https://www.alwaysbooked.us/contact" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Alwaysbooked" />
+  <meta property="og:title" content="Contact — Alwaysbooked" />
+  <meta property="og:description" content="Book a 30-minute discovery call or email us. We reply within one business day." />
+  <meta property="og:url" content="https://www.alwaysbooked.us/contact" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.alwaysbooked.us/assets/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — Alwaysbooked" />
+  <meta name="twitter:description" content="Book a 30-minute discovery call or email us. We reply within one business day." />
+  <meta name="twitter:image" content="https://www.alwaysbooked.us/assets/og-image.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -23,6 +42,21 @@
       .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Alwaysbooked",
+    "url": "https://www.alwaysbooked.us/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Alwaysbooked",
+      "url": "https://www.alwaysbooked.us/",
+      "email": "alwaysbook3d@gmail.com"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -91,11 +125,11 @@
                 Formspree/Tally endpoint: <form action="https://formspree.io/f/XXXX" method="POST">
               -->
               <form action="mailto:alwaysbook3d@gmail.com" method="post" enctype="text/plain" style="margin-top:18px; display:flex; flex-direction:column; gap:12px;">
-                <input type="text" name="name" placeholder="Your name" required
+                <input type="text" name="name" placeholder="Your name" aria-label="Your name" autocomplete="name" required
                   style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:12px 14px; color:var(--text); font-family:inherit; font-size:15px;" />
-                <input type="text" name="business" placeholder="Business name & industry"
+                <input type="text" name="business" placeholder="Business name & industry" aria-label="Business name and industry" autocomplete="organization"
                   style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:12px 14px; color:var(--text); font-family:inherit; font-size:15px;" />
-                <textarea name="message" rows="3" placeholder="What's your biggest lead/booking headache?"
+                <textarea name="message" rows="3" placeholder="What's your biggest lead/booking headache?" aria-label="Your message"
                   style="background:var(--bg-elevated); border:1px solid var(--border); border-radius:8px; padding:12px 14px; color:var(--text); font-family:inherit; font-size:15px; resize:vertical;"></textarea>
                 <button type="submit" class="btn btn-ghost" style="width:100%; justify-content:center;">Send Email</button>
               </form>

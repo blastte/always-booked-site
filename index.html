@@ -6,12 +6,29 @@
   <title>Alwaysbooked — AI Receptionist & Lead System for Local Service Businesses</title>
   <meta name="description" content="We install the AI system that answers every call, follows up on every lead, and books appointments around the clock. Done for you." />
 
+  <link rel="canonical" href="https://www.alwaysbooked.us/" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Icons / manifest -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/site.webmanifest" />
+
   <!-- Open Graph -->
+  <meta property="og:site_name" content="Alwaysbooked" />
   <meta property="og:title" content="Alwaysbooked — AI Receptionist & Lead System for Local Service Businesses" />
   <meta property="og:description" content="We install the AI system that answers every call, follows up on every lead, and books appointments around the clock. Done for you." />
-  <meta property="og:url" content="https://www.alwaysbooked.us" />
+  <meta property="og:url" content="https://www.alwaysbooked.us/" />
   <meta property="og:type" content="website" />
-  <!-- TODO: add an OG share image -> <meta property="og:image" content="https://www.alwaysbooked.us/assets/og-image.jpg" /> -->
+  <!-- Drop the share image at the path below (1200x630). The tags already point to it. -->
+  <meta property="og:image" content="https://www.alwaysbooked.us/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Alwaysbooked — AI Receptionist & Lead System for Local Service Businesses" />
+  <meta name="twitter:description" content="We install the AI system that answers every call, follows up on every lead, and books appointments around the clock. Done for you." />
+  <meta name="twitter:image" content="https://www.alwaysbooked.us/assets/og-image.jpg" />
 
   <!-- Fonts: Space Grotesk (display) + Inter (body) + Caveat (handwritten accent) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +36,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Structured data: business + FAQ rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.alwaysbooked.us/#business",
+        "name": "Alwaysbooked",
+        "url": "https://www.alwaysbooked.us/",
+        "description": "Done-for-you AI receptionist and lead system that answers every call, follows up on every lead, and books appointments for local service businesses.",
+        "email": "alwaysbook3d@gmail.com",
+        "priceRange": "$500-$997/month",
+        "areaServed": "United States",
+        "serviceType": ["AI receptionist", "Lead follow-up automation", "Appointment booking"],
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Dental practices, med spas, HVAC and home services, chiropractic, law firms"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.alwaysbooked.us/#website",
+        "url": "https://www.alwaysbooked.us/",
+        "name": "Alwaysbooked",
+        "publisher": { "@id": "https://www.alwaysbooked.us/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.alwaysbooked.us/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "How fast can you launch?", "acceptedAnswer": { "@type": "Answer", "text": "Most installs go live in 5–10 business days. We handle the build, training, and deployment. You provide a phone number to forward, your booking calendar, and 30 minutes for a kickoff call." } },
+          { "@type": "Question", "name": "Will the AI sound robotic?", "acceptedAnswer": { "@type": "Answer", "text": "No. We use Retell AI voices that pass the \"is this a real person?\" test. We tune the tone, pacing, and script to your business before going live." } },
+          { "@type": "Question", "name": "What does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "Retainers run $500–$997/month depending on call volume and the channels you need covered. No setup fees during our current launch pricing. We'll give you an exact number on the discovery call." } },
+          { "@type": "Question", "name": "Are there contracts?", "acceptedAnswer": { "@type": "Answer", "text": "Month-to-month only. Cancel anytime with 30 days' notice. No long-term commitments." } },
+          { "@type": "Question", "name": "What do I need to provide?", "acceptedAnswer": { "@type": "Answer", "text": "A phone number to forward, access to your booking calendar, and 30 minutes for an onboarding call. We build and manage everything else." } },
+          { "@type": "Question", "name": "What industries do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "Best fit: dental, med spas, HVAC and home services, chiro, law firms, and any local service business that fields inbound calls. If you're losing leads to voicemail, we can help." } }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -51,6 +111,7 @@
     </div>
   </nav>
 
+  <main>
   <!-- ===================== HERO ===================== -->
   <section class="hero">
     <div class="hero-inner">
@@ -396,6 +457,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ===================== FOOTER ===================== -->
   <footer>
