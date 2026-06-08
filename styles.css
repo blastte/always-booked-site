@@ -1500,3 +1500,349 @@ footer {
   .reveal { opacity: 1; transform: none; }
   .marquee-track { animation: none; }
 }
+
+
+/* ============================================================
+   CONSOLIDATED RESPONSIVE PATCH (appended) — VERIFIED + FIXED
+   ------------------------------------------------------------
+   One coherent, de-duplicated pass over all five audit clusters:
+     Hero/nav/trust · Results/proof-table · Carousel ·
+     Automations/showcase/system · FAQ/CTA/footer/pages/global.
+   Breakpoint set (max-width, consistent throughout):
+     1024  tablet  ·  860  nav-mobile boundary  ·  640  phone
+     430  small phone  ·  360  very small phone
+     (+ 560 proof-table restack, 400 carousel width-clamp)
+   Every responsive rule lives inside a max-width query, so desktop
+   (>=1025px) is untouched. Two intentionally-global rules below are
+   visually/functionally inert on desktop (overflow-wrap only fires on
+   overflow; the 44px dot hit-area is now scoped to <=640 so desktop
+   dots stay 8px). Carousel sizing stays REAL/measurable (the JS reads
+   slide.offsetWidth + computed gap + viewport.clientWidth on resize).
+   ============================================================ */
+
+/* ---- GLOBAL: belt-and-suspenders against horizontal overflow ----
+   Only engages when a token would otherwise overflow its line box, so
+   it is visually inert at desktop widths (prose/email/URL all fit). */
+.footer-links a,
+.footer-copy,
+.legal a,
+.legal p,
+.auto-line,
+.auto-msg,
+.auto-caller-name,
+.auto-caller-sub,
+.auto-sms-name {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* ============================ <= 1024px ============================
+   Tablet portrait + landscape. */
+@media (max-width: 1024px) {
+  /* Proof table: relax the fixed columns so the 1fr Caller column
+     keeps room and rows stop wrapping to 2-3 lines. */
+  .proof-table-header,
+  .proof-table-row {
+    grid-template-columns: 72px minmax(0, 1fr) 104px 40px;
+    gap: 10px;
+    padding: 12px 18px;
+  }
+  .proof-table-footer { padding: 14px 18px; }
+
+  /* Carousel: trim the stage so it doesn't dominate; keep peek. */
+  .carousel {
+    --stage-h: min(58vh, 480px);
+    max-width: 500px;
+  }
+  .carousel-track { gap: 24px; }
+}
+
+
+/* ============================ <= 860px ============================
+   Nav goes mobile here (existing). Align the hero metrics + the
+   automation/system tuning to the SAME boundary. */
+@media (max-width: 860px) {
+  /* Hamburger: primary mobile nav control -> real 44px tap target.
+     (Was 36x36 in base CSS.) Fits the 68px nav; bars stay centered. */
+  .hamburger { width: 44px; height: 44px; }
+
+  /* Hero metrics: stack 2-up the moment the layout goes mobile,
+     killing the cramped 3-up on the 641-860 band. Third (widest,
+     "$11,680") spans full width so it isn't half-empty/alone. */
+  .hero-metrics {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 28px;
+    margin-top: 56px;
+    padding-top: 40px;
+  }
+  .hero-metrics .hero-metric:nth-child(3) { grid-column: 1 / -1; }
+
+  /* Aurora: cheaper paint on tablets/phones — smaller blur, no
+     infinite animation, less overscan. Look is preserved. */
+  .hero::before {
+    filter: blur(48px);
+    animation: none;
+    inset: -15% -10%;
+  }
+
+  /* System steps: de-cramp before/after the 1-col snap. */
+  .step { padding: 32px 30px; }
+  .step-num { font-size: 56px; margin-bottom: 18px; }
+
+  /* Automation mockups: drop the desktop-tuned min-height floor so
+     margin-top:auto can't open a dead band above the Booked chip;
+     widen bubbles to cut wrap lines (shorter card). */
+  .auto-anim {
+    min-height: 0;
+    padding: 20px;
+    gap: 12px;
+  }
+  .auto-line { max-width: 92%; }
+  .auto-msg  { max-width: 90%; }
+  .auto-booked { margin-top: 6px; }
+}
+
+
+/* ============================ <= 768px ============================
+   (Existing @768 block earlier in the file already handles
+   .section / .hero / .hero-metrics(1col) / .results / .cta /
+   .footer-inner. The rules below ADD to that breakpoint.) */
+@media (max-width: 768px) {
+  /* FOOTER: copyright agrees with the now-left-aligned column
+     instead of fighting it with center. */
+  .footer-copy { text-align: left; margin-top: 24px; }
+
+  /* FOOTER links: real 44px tap targets. */
+  .footer-links { gap: 4px 22px; }
+  .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 0;
+  }
+
+  /* FAQ: reclaim the wasted right gutter on answer text (the +/-
+     glyph only sits on the summary row) + comfortable tap row. */
+  details.faq-item p { padding-right: 0; }
+  details.faq-item summary { align-items: flex-start; min-height: 44px; }
+  details.faq-item summary::after { line-height: 1; margin-top: 2px; }
+
+  /* CONTACT form: >=44px controls + 16px font to stop iOS focus-zoom.
+     !important is required to beat the inline style="" font-size/padding
+     on the inputs; min-height has no inline counterpart so it applies. */
+  .contact-grid input,
+  .contact-grid textarea,
+  form[action^="mailto:"] input,
+  form[action^="mailto:"] textarea {
+    font-size: 16px !important;
+    padding: 13px 14px !important;
+    min-height: 46px;
+  }
+  form[action^="mailto:"] textarea { min-height: 92px; }
+}
+
+
+/* ============================ <= 640px ============================
+   Phones. */
+@media (max-width: 640px) {
+  /* HERO: content-driven height, lighter headline, less top crowding. */
+  .hero {
+    min-height: auto;
+    padding: 118px 22px 52px;
+    align-items: flex-start;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 10.5vw, 46px);
+    line-height: 0.98;
+    max-width: 18ch;
+  }
+  .hero .subhead { margin: 22px 0 32px; }
+
+  /* HERO METRICS: single column, punchy numbers (reset the @860 span). */
+  .hero-metrics {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    margin-top: 48px;
+    padding-top: 32px;
+  }
+  .hero-metrics .hero-metric:nth-child(3) { grid-column: auto; }
+  .hero-metric .num { font-size: clamp(40px, 12vw, 56px); }
+
+  /* TRUST STRIP: denser, smaller lockups so more logos read per row. */
+  .trust { padding: 36px 0; }
+  .trust-label { margin-bottom: 22px; }
+  .marquee-track { --logo-w: 22px; --logo-gap: 36px; }
+  .marquee-item { gap: 9px; }
+  .logo-name { font-size: 16px; }
+  .industries {
+    margin-top: 26px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    padding: 0 4px;
+  }
+
+  /* CAROUSEL: width-driven stage so the 9/16 active slide fits the
+     column; tighter fade for a clean sliver-peek; smaller gap;
+     >=44px arrow targets. All values stay real for the JS measure. */
+  .carousel {
+    --stage-h: min(52vh, 430px);
+    max-width: 92vw;
+  }
+  .carousel-track { gap: 16px; }
+  .carousel-viewport {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  }
+  .carousel-btn { width: 46px; height: 46px; font-size: 20px; }
+  .carousel-nav { gap: 14px; margin-top: 18px; }
+  .carousel-dots { gap: 14px; }
+
+  /* CAROUSEL dot tap target: scoped to phones (NOT desktop). At <=640
+     the dot gap is 14px so center spacing is 22px and the 44px invisible
+     hit zones just meet at the edges (negligible overlap). On desktop the
+     dots stay plain 8px buttons -> desktop behavior unchanged. */
+  .carousel-dot { position: relative; }
+  .carousel-dot::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+  }
+
+  /* AUTOMATION mockups: final size pass for the ~228px column. */
+  .auto-anim { padding: 18px; gap: 11px; }
+  .auto-line, .auto-msg { font-size: 12.5px; }
+  .auto-line { max-width: 94%; }
+  .auto-msg  { max-width: 92%; }
+  .auto-head { gap: 8px; }
+  .auto-status-wrap { min-width: 0; }
+  .auto-status { font-size: 11px; }
+  .auto-clock { flex: none; }
+  .auto-avatar { width: 38px; height: 38px; font-size: 16px; }
+  .auto-caller-name { font-size: 14px; }
+  .auto-booked { font-size: 13px; padding: 11px 13px; }
+  .step-num { font-size: 50px; }
+
+  /* CTA: tighten the box so headline/sub/button aren't lost in padding. */
+  .cta-section { padding: 44px 22px; }
+  .cta-section .subhead { margin: 18px auto 30px; }
+  .cta-section h2 { font-size: clamp(28px, 7vw, 40px); }
+
+  /* FAQ: tighter list rhythm. */
+  details.faq-item { padding: 22px 0; }
+  details.faq-item summary { font-size: 17px; }
+}
+
+
+/* === RESULTS / PROOF TABLE restack — phones/small tablets ===
+   The 80/1fr/110/64 fixed grid needs ~290px of tracks+gaps and CLIPS
+   /overflows below ~430px (grid area is only 182/222/238px at 320/360/390).
+   Restack each row into a 2x2 card that fits 320px+. Engages at 560 so
+   the restack is active before the clip point; the fixed grid is safe
+   above 560 (1fr_remaining is positive from 561px up). */
+@media (max-width: 560px) {
+  .results { padding: 40px 18px; }
+
+  .proof-table { font-size: 13px; max-width: 420px; }
+
+  /* Column header no longer maps to a grid — hide it. */
+  .proof-table-header { display: none; }
+
+  /* Row -> 2 cols x 2 rows:
+       caller | outcome
+       time   | done                                            */
+  .proof-table-row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "caller outcome"
+      "time   done";
+    gap: 4px 12px;
+    padding: 14px 16px;
+    align-items: center;
+  }
+  .proof-table-row > span:nth-child(1) {        /* Time */
+    grid-area: time;
+    font-size: 12px;
+    color: var(--text-mute);
+  }
+  .proof-table-row > span:nth-child(2) {        /* Caller */
+    grid-area: caller;
+    font-weight: 600;
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+  .proof-table-row > span:nth-child(3) {        /* Outcome badge */
+    grid-area: outcome;
+    justify-self: end;
+  }
+  .proof-table-row > span:nth-child(4) {        /* Done check */
+    grid-area: done;
+    justify-self: end;
+    font-size: 14px;
+  }
+
+  /* Footer: stack left-aligned, drop the space-between gaps. */
+  .proof-table-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 14px 16px;
+    text-align: left;
+  }
+
+  /* Stats: count-up number never overflows at 320px. */
+  .results-grid { gap: 28px; }
+  .result-stat .num {
+    font-size: clamp(40px, 12vw, 60px);
+    overflow-wrap: anywhere;
+  }
+}
+
+
+/* ============================ <= 430px ============================
+   True phones — global rhythm trim + smallest-screen sizing. */
+@media (max-width: 430px) {
+  /* Section/container rhythm (desktop 130 / tablet 88 untouched above). */
+  .section { padding: 64px 20px; }
+  .container { padding: 0 20px; }
+  footer { padding: 44px 20px; }
+
+  /* HERO: one more notch down. */
+  .hero { padding: 110px 18px 48px; }
+  .hero h1 { font-size: clamp(32px, 11vw, 40px); }
+  .hero-note { font-size: 13px; }
+
+  /* TRUST STRIP: smallest lockups. */
+  .marquee-track { --logo-w: 20px; --logo-gap: 30px; }
+  .logo-name { font-size: 15px; }
+
+  /* CTA: tighter again for 320-360px. */
+  .cta-section { padding: 38px 18px; }
+}
+
+
+/* === CAROUSEL very-small clamp (<=400px) ===
+   Clamp stage-h by WIDTH so the 9/16 active slide can never exceed the
+   content column. The denominator uses 100vw-96 while the real column at
+   these widths is 100vw-80, so it over-subtracts 16px (conservative).
+   Resolves to real px for the JS measurement. */
+@media (max-width: 400px) {
+  .carousel {
+    --stage-h: min(52vh, calc((100vw - 96px) * 0.9 * 16 / 9), 420px);
+    max-width: 94vw;
+  }
+}
+
+
+/* ============================ <= 360px ============================
+   Very small phones — trim padding so restacked cards breathe. */
+@media (max-width: 360px) {
+  .results { padding: 36px 14px; }
+  .proof-table-row { padding: 12px 13px; }
+  .proof-table-footer { padding: 12px 13px; }
+  .result-stat .num { font-size: clamp(38px, 13vw, 52px); }
+}
